@@ -44,34 +44,34 @@ public class Util {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+
 		return utf.trim();
 	}
-	
+
 	public static char[] strToChar(String bin) {
 		return bin.toCharArray();
 	}
-	
+
 	public static int[] strToInt(String bin) {
 		int[] array = new int[bin.length()];
-		
-		for(int i = 0; i < bin.length(); i++) {
+
+		for (int i = 0; i < bin.length(); i++) {
 			array[i] = Integer.parseInt(bin.substring(i, i + 1));
 		}
-		
+
 		return array;
 	}
-	
+
 	public static void print(int[] arr) {
 		System.out.println(Arrays.toString(arr));
 	}
-	
+
 	public static void print(char[] arr) {
 		System.out.println(Arrays.toString(arr));
 	}
-	
+
 	public static void print(byte[] arr) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			int val = arr[i];
 
 			// byte 1 = 8 bits
@@ -81,7 +81,6 @@ public class Util {
 			}
 		}
 	}
-	
 
 	/**
 	 * Split into left and right
@@ -94,31 +93,42 @@ public class Util {
 		for (int i = half, j = 0; i < input.length; i++, j++)
 			right[j] = input[i];
 	}
-	
+
 	/**
 	 * Combine left and right
 	 */
 	public static int[] combine(int[] left, int[] right) {
 		int[] out = new int[left.length + right.length];
 
-		for(int i = 0; i < left.length; i++) out[i] = left[i];
-		for(int i = 0, j = left.length; i < right.length; i++, j++) out[j] = right[i];
-		
+		for (int i = 0; i < left.length; i++)
+			out[i] = left[i];
+		for (int i = 0, j = left.length; i < right.length; i++, j++)
+			out[j] = right[i];
+
 		return out;
 	}
-	
+
 	/**
 	 * XOR of two arrays
 	 */
 	public static int[] xor(int[] one, int[] two) {
 		int[] out = new int[one.length];
-		
-		for(int i = 0; i < one.length; i++)
+
+		for (int i = 0; i < one.length; i++)
 			out[i] = one[i] ^ two[i];
-		
+
 		return out;
 	}
-	
+
+	/**
+	 * Swap two arrays
+	 */
+	public static void swap(int[] one, int[] two) {
+		int[] temp = one;
+		one = two;
+		two = temp;
+	}
+
 	/**
 	 * Return decimal for two bit
 	 */
@@ -133,19 +143,16 @@ public class Util {
 			return 3;
 		return -1;
 	}
-	
+
 	/**
 	 * Return string from arr
 	 */
 	public static String intToStr(int[] arr) {
 		String s = "";
-		
-		for(int i = 0; i < arr.length; i++)
+
+		for (int i = 0; i < arr.length; i++)
 			s += String.valueOf(arr[i]);
-		
+
 		return s;
 	}
 }
-
-
-
