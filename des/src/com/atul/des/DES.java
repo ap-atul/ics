@@ -17,8 +17,9 @@ public class DES {
 			return;
 		}
 
+		int[] shifts = {1, 3};
 		int[] keyPer = Permutation.permutation10(key);
-		int[][] keys = Operations.keygen(keyPer, 2);
+		int[][] keys = Operations.keygen(keyPer, shifts, 2);
 		
 		this.keyOne = keys[0];
 		this.keyTwo = keys[1];
@@ -36,13 +37,13 @@ public class DES {
 
 	public int[] encryptBlock(int[] block) {
 		int[][] keys = { this.keyOne, this.keyTwo };
-		block = Operations.run(Permutation.initialPermutation(block), keys);
+		block = Operations.run(Permutation.initialPermutation(block), keys, 2);
 		return Permutation.initialPermutationInverse(block);
 	}
 
 	public int[] decryptBlock(int[] block) {
 		int[][] keys = { this.keyTwo, this.keyOne };
-		block = Operations.run(Permutation.initialPermutation(block), keys);
+		block = Operations.run(Permutation.initialPermutation(block), keys, 2);
 		return Permutation.initialPermutationInverse(block);
 	}
 }

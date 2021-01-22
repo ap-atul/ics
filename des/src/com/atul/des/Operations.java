@@ -4,12 +4,12 @@ import com.atul.util.Util;
 
 public class Operations {
 
-	public static int[] run(int[] block, int[][] keys) {
+	public static int[] run(int[] block, int[][] keys, int rounds) {
 		int[] right = new int[block.length / 2];
 		int[] left = new int[block.length / 2];
 		Util.split(block, left, right);
 
-		for (int i = 0; i < keys.length; i++) {
+		for (int i = 0; i < rounds; i++) {
 			int[] xor = Util.xor(keys[i], Permutation.expansionPermutation(right));
 
 			int[] halveOne = new int[xor.length / 2];
@@ -20,7 +20,7 @@ public class Operations {
 			int[] sbox1 = Permutation.sBox1(halveTwo);
 			left = Util.xor(Permutation.permutation4(Util.combine(sbox0, sbox1)), left);
 
-			if (i == 0) {
+			if (i < rounds - 1) { // final round no swaps
 				int[] temp = left;
 				left = right;
 				right = temp;
@@ -30,9 +30,8 @@ public class Operations {
 		return Util.combine(left, right);
 	}
 
-	public static int[][] keygen(int[] key, int no) {
+	public static int[][] keygen(int[] key, int[] shifts, int no) {
 		int[][] keys = new int[key.length][key.length];
-		int[] shifts = {1, 3};
 
 		for (int i = 0; i < no; i++) {
 			
