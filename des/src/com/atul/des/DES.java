@@ -18,32 +18,10 @@ public class DES {
 		}
 
 		int[] keyPer = Permutation.permutation10(key);
-
-		// creating k1
-		int half = keyPer.length / 2;
-		int[] halveOne = new int[half];
-		int[] halveTwo = new int[half];
-		Util.split(keyPer, halveOne, halveTwo);
-		Permutation.shiftLeft(halveOne, 1);
-		Permutation.shiftLeft(halveTwo, 1);
-		keyOne = Util.combine(halveOne, halveTwo);
-		keyOne = Permutation.permutation8(keyOne);
-
-		// creating k1
-		half = keyPer.length / 2;
-		halveOne = new int[half];
-		halveTwo = new int[half];
-		Util.split(keyPer, halveOne, halveTwo);
-		Permutation.shiftLeft(halveOne, 3);
-		Permutation.shiftLeft(halveTwo, 3); // use prev & shift only 2
-		keyTwo = Util.combine(halveOne, halveTwo);
-		keyTwo = Permutation.permutation8(keyTwo);
-
-//		System.out.println("Key one");
-//		Util.print(keyOne);
-//		
-//		System.out.println("Key two");
-//		Util.print(keyTwo);
+		int[][] keys = Operations.keygen(keyPer, 2);
+		
+		this.keyOne = keys[0];
+		this.keyTwo = keys[1];
 	}
 
 	public String encrypt(String message) {

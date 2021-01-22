@@ -29,4 +29,24 @@ public class Operations {
 
 		return Util.combine(left, right);
 	}
+
+	public static int[][] keygen(int[] key, int no) {
+		int[][] keys = new int[key.length][key.length];
+		int[] shifts = {1, 3};
+
+		for (int i = 0; i < no; i++) {
+			
+			int half = key.length / 2;
+			int[] halveOne = new int[half];
+			int[] halveTwo = new int[half];
+			Util.split(key, halveOne, halveTwo);
+			
+			Permutation.shiftLeft(halveOne, shifts[i]);
+			Permutation.shiftLeft(halveTwo, shifts[i]);
+
+			keys[i] = Permutation.permutation8(Util.combine(halveOne, halveTwo));
+		}
+
+		return keys;
+	}
 }
