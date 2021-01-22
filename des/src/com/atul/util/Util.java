@@ -45,7 +45,7 @@ public class Util {
 			e.printStackTrace();
 		}
 
-		return utf.trim();
+		return utf;
 	}
 
 	public static char[] strToChar(String bin) {
@@ -154,5 +154,38 @@ public class Util {
 			s += String.valueOf(arr[i]);
 
 		return s;
+	}
+	
+	/**
+	 * Create separate blocks
+	 */
+	public static String[] splitBlocks(String block, int size) {
+		int remainder = block.length() % size;
+		// padding
+		if (remainder != 0) {
+			for (int i = 0; i < (size - remainder); i++)
+				block = "0" + block;
+		}
+		
+		String[] out = new String[block.length() / size];
+		int offset = 0;
+		for (int i = 0; i < out.length; i++) {
+			out[i] = block.substring(offset, offset + size);
+			offset += size;
+		}
+		
+		return out;
+	}
+	
+	/*
+	 * Combine blocks
+	 */
+	public static String mergeBlocks(String[] blocks) {
+		String out = "";
+		
+		for(int i = 0; i < blocks.length; i++)
+			out += blocks[i];
+		
+		return out;
 	}
 }

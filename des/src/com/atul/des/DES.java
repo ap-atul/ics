@@ -26,13 +26,33 @@ public class DES {
 	}
 
 	public String encrypt(String message) {
-		int[] block = Util.strToInt(message);
-		return Util.intToStr(encryptBlock(block));
+//		message = Util.utfToBin(message);
+		int blockLength = message.length() / 8;
+		String[] blocks = Util.splitBlocks(message, 8);
+		String[] encrypted = new String[blocks.length];
+		
+		for(int i = 0; i < blockLength; i++) {
+			int[] enc = encryptBlock(Util.strToInt(blocks[i]));
+			encrypted[i] = Util.intToStr(enc);
+		}
+
+		return Util.mergeBlocks(encrypted);
+//		return Util.binToUtf(Util.mergeBlocks(encrypted));
 	}
 
 	public String decrypt(String message) {
-		int[] block = Util.strToInt(message);
-		return Util.intToStr(decryptBlock(block));
+//		message = Util.utfToBin(message);
+		int blockLength = message.length() / 8;
+		String[] blocks = Util.splitBlocks(message, 8);
+		String[] decrypted = new String[blocks.length];
+		
+		for(int i = 0; i < blockLength; i++) {
+			int[] enc = decryptBlock(Util.strToInt(blocks[i]));
+			decrypted[i] = Util.intToStr(enc);
+		}
+		
+		return Util.mergeBlocks(decrypted);
+//		return Util.binToUtf(Util.mergeBlocks(decrypted));
 	}
 
 	public int[] encryptBlock(int[] block) {

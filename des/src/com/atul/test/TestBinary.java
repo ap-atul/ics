@@ -5,7 +5,7 @@ import com.atul.des.DES;
 public class TestBinary {
 
 	public static void main(String[] args) {
-		String message = "00101000";
+		String message = "10101101";
 		String key = "1100011110";
 		System.out.println("Original Message :: " + message);
 
