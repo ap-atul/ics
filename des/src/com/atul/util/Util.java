@@ -23,26 +23,25 @@ public class Util {
 				val <<= 1;
 			}
 		}
-
+		
 		return bin;
 	}
 
 	public static String binToUtf(String bin) {
 		String utf = "";
-		byte[] bytesData = new byte[bin.length() / 8];
-
-		for (int i = 0; i < bytesData.length; i++) {
-			String temp = bin.substring(0, 8);
-			byte b = (byte) Integer.parseInt(temp, 2);
-
-			bytesData[i] = b;
-			bin = bin.substring(8);
+		
+		int remainder = bin.length() % 8;
+		// padding
+		if (remainder != 0) {
+			for (int i = 0; i < (8 - remainder); i++)
+				bin = "0" + bin;
 		}
-
-		try {
-			utf = new String(bytesData, "utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		
+		for (int index = 0; index < bin.length(); index += 8) {
+			String temp = bin.substring(index, index + 8);
+			int num = Integer.parseInt(temp, 2);
+			char letter = (char) num;
+			utf += letter;
 		}
 
 		return utf;
@@ -155,7 +154,7 @@ public class Util {
 
 		return s;
 	}
-	
+
 	/**
 	 * Create separate blocks
 	 */
@@ -166,26 +165,26 @@ public class Util {
 			for (int i = 0; i < (size - remainder); i++)
 				block = "0" + block;
 		}
-		
+
 		String[] out = new String[block.length() / size];
 		int offset = 0;
 		for (int i = 0; i < out.length; i++) {
 			out[i] = block.substring(offset, offset + size);
 			offset += size;
 		}
-		
+
 		return out;
 	}
-	
+
 	/*
 	 * Combine blocks
 	 */
 	public static String mergeBlocks(String[] blocks) {
 		String out = "";
-		
-		for(int i = 0; i < blocks.length; i++)
+
+		for (int i = 0; i < blocks.length; i++)
 			out += blocks[i];
-		
+
 		return out;
 	}
 }
