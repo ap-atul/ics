@@ -4,6 +4,9 @@ import com.atul.util.Util;
 
 public class Operations {
 
+	/*
+	 * Perform the set of operations on the block of binary data.
+	 */
 	public static int[] run(int[] block, int[][] keys, int rounds) {
 		int[] right = new int[block.length / 2];
 		int[] left = new int[block.length / 2];
@@ -30,11 +33,13 @@ public class Operations {
 		return Util.combine(left, right);
 	}
 
+	/*
+	 * Generate two keys for the SDES
+	 */
 	public static int[][] keygen(int[] key, int[] shifts, int no) {
 		int[][] keys = new int[key.length][key.length];
 
 		for (int i = 0; i < no; i++) {
-			
 			int half = key.length / 2;
 			int[] halveOne = new int[half];
 			int[] halveTwo = new int[half];
