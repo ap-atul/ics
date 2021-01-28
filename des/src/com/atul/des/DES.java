@@ -50,13 +50,13 @@ public class DES {
 		return Util.binToUtf(Util.mergeBlocks(decrypted));
 	}
 
-	public int[] encryptBlock(int[] block) {
+	private int[] encryptBlock(int[] block) {
 		int[][] keys = { this.keyOne, this.keyTwo };
 		block = Operations.run(Permutation.initialPermutation(block), keys, 2);
 		return Permutation.initialPermutationInverse(block);
 	}
 
-	public int[] decryptBlock(int[] block) {
+	private int[] decryptBlock(int[] block) {
 		int[][] keys = { this.keyTwo, this.keyOne };
 		block = Operations.run(Permutation.initialPermutation(block), keys, 2);
 		return Permutation.initialPermutationInverse(block);
