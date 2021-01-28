@@ -4,6 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 public class Util {
+	/**
+	 * Convert a string to a binary string
+	 */
 	public static String utfToBin(String input) {
 		String bin = "";
 		byte[] bytesData = null;
@@ -24,6 +27,9 @@ public class Util {
 		return bin;
 	}
 
+	/**
+	 * Convert binary string to a ascii string
+	 */
 	public static String binToUtf(String bin) {
 		String utf = "";
 		int remainder = bin.length() % 8;
@@ -43,10 +49,9 @@ public class Util {
 		return utf;
 	}
 
-	public static char[] strToChar(String bin) {
-		return bin.toCharArray();
-	}
-
+	/**
+	 * Convert binary string to int array 
+	 */
 	public static int[] strToInt(String bin) {
 		int[] array = new int[bin.length()];
 		for (int i = 0; i < bin.length(); i++) {
@@ -55,14 +60,23 @@ public class Util {
 		return array;
 	}
 
+	/*
+	 * Utility to print int array
+	 */
 	public static void print(int[] arr) {
 		System.out.println(Arrays.toString(arr));
 	}
 
+	/*
+	 * Utility to print char array
+	 */
 	public static void print(char[] arr) {
 		System.out.println(Arrays.toString(arr));
 	}
-
+	
+	/*
+	 * Utility to print byte array
+	 */
 	public static void print(byte[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			int val = arr[i];
@@ -161,7 +175,7 @@ public class Util {
 	}
 
 	/*
-	 * Combine blocks
+	 * Combine blocks of string
 	 */
 	public static String mergeBlocks(String[] blocks) {
 		String out = "";
