@@ -60,8 +60,7 @@ public class Permutation {
 	public static int[] initialPermutation(int[] arr) {
 		int[] out = new int[IP.length];
 
-		for (int i = 0; i < IP.length; i++)
-			out[i] = arr[IP[i] - 1];
+		for (int i = 0; i < IP.length; i++) out[i] = arr[IP[i] - 1];
 		return out;
 	}
 	
@@ -71,8 +70,7 @@ public class Permutation {
 	public static int[] initialPermutationInverse(int[] arr) {
 		int[] out = new int[IP_.length];
 
-		for (int i = 0; i < IP_.length; i++)
-			out[i] = arr[IP_[i] - 1];
+		for (int i = 0; i < IP_.length; i++) out[i] = arr[IP_[i] - 1];
 		return out;
 	}
 	
@@ -82,8 +80,7 @@ public class Permutation {
 	public static int[] expansionPermutation(int[] arr) {
 		int[] out = new int[EP.length];
 		
-		for(int i = 0; i < EP.length; i++)
-			out[i] = arr[EP[i] - 1];
+		for(int i = 0; i < EP.length; i++) out[i] = arr[EP[i] - 1];
 		return out;
 	}
 	
@@ -93,8 +90,7 @@ public class Permutation {
 	public static int[] permutation10(int[] arr) {
 		int[] out = new int[P10.length];
 		
-		for(int i = 0; i < P10.length; i++)
-			out[i] = arr[P10[i] - 1];
+		for(int i = 0; i < P10.length; i++) out[i] = arr[P10[i] - 1];
 		return out;
 	}
 	
@@ -104,8 +100,7 @@ public class Permutation {
 	public static int[] permutation8(int[] arr) {
 		int[] out = new int[P8.length];
 		
-		for(int i = 0; i < P8.length; i++)
-			out[i] = arr[P8[i] - 1];
+		for(int i = 0; i < P8.length; i++) out[i] = arr[P8[i] - 1];
 		return out;
 	}
 	
@@ -115,8 +110,7 @@ public class Permutation {
 	public static int[] permutation4(int[] arr) {
 		int[] out = new int[P4.length];
 		
-		for(int i = 0; i < P4.length; i++)
-			out[i] = arr[P4[i] - 1];
+		for(int i = 0; i < P4.length; i++) out[i] = arr[P4[i] - 1];
 		return out;
 	}
 
@@ -126,12 +120,9 @@ public class Permutation {
 	public static void shiftLeft(int[] arr, int d) {
 		int temp[] = new int[d];
 
-		for (int i = 0; i < d; i++)
-			temp[i] = arr[i];
-		for (int i = d; i < arr.length; i++)
-			arr[i - d] = arr[i];
-		for (int i = 0; i < d; i++)
-			arr[i + arr.length - d] = temp[i];
+		for (int i = 0; i < d; i++)          temp[i] = arr[i];
+		for (int i = d; i < arr.length; i++) arr[i - d] = arr[i];
+		for (int i = 0; i < d; i++)          arr[i + arr.length - d] = temp[i];
 	}
 	
 	/*
