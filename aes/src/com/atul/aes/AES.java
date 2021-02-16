@@ -44,15 +44,4 @@ public class AES {
 		String plain = Util.xor(operations, W[0] + W[1]);
 		return plain;
 	}
-
-	public static void main(String args[]) {
-		String plain = "1010101010101010";
-		String key = "1010101010101010";
-		AES aes = new AES(key);
-		String cipher = aes.encrypt(plain);
-		
-		System.out.println(plain);
-		System.out.println(cipher);
-		System.out.println(aes.decrypt(cipher));
-	}
 }
