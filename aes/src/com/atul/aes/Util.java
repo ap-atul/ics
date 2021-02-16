@@ -6,6 +6,7 @@ public class Util {
 		String s2 = string.substring(4, 8);
 		String s3 = string.substring(8, 12);
 		String s4 = string.substring(12, 16);
+		
 		return s1 + s4 + s3 + s2;
 	}
 
@@ -14,6 +15,16 @@ public class Util {
 		String s10 = xor(str.substring(8, 12), multiplication("0100", str.substring(0, 4)));
 		String s01 = xor(str.substring(4, 8), multiplication("0100", str.substring(12, 16)));
 		String s11 = xor(str.substring(12, 16), multiplication("0100", str.substring(4, 8)));
+		
+		return s00 + s10 + s01 + s11;
+	}
+
+	public static String inverseMixColumn(String str) {
+		String s00 = xor(multiplication("1001", str.substring(0, 4)), multiplication("0010", str.substring(8, 12)));
+		String s10 = xor(multiplication("1001", str.substring(8, 12)), multiplication("0010", str.substring(0, 4)));
+		String s01 = xor(multiplication("1001", str.substring(4, 8)), multiplication("0010", str.substring(12, 16)));
+		String s11 = xor(multiplication("1001", str.substring(12, 16)), multiplication("0010", str.substring(4, 8)));
+
 		return s00 + s10 + s01 + s11;
 	}
 
