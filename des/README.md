@@ -1,7 +1,7 @@
 ## DES 
 Simple Data Encryption Standard - using 10 bit key and 8 bit data
 
-For more [info] (https://sandilands.info/crypto/DataEncryptionStandard.html)
+For more [info](https://sandilands.info/crypto/DataEncryptionStandard.html)
 
 ## Simplified Version 
 
