@@ -46,7 +46,7 @@ public class DES {
 
 		return Util.mergeBlocks(encrypted);
 	}
-
+	
 	/*
 	 * Perform decryption on an input BIN string (not string)
 	 */
