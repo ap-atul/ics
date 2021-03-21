@@ -8,7 +8,7 @@ public class TestBinary {
 		String message = "This is a very secure encryption format"
 				+ " and its impossible to break with my secret password."
 				+ " Best of luck to hackers.";
-		String key = "0000000000";
+		String key = "0011001101";
 		
 		DES des = new DES(key);
 		String enc = des.encrypt(message);

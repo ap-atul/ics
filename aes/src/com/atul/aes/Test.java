@@ -7,8 +7,8 @@ public class Test {
 		AES aes = new AES(key);
 		String cipher = aes.encrypt(plain);
 		
-		System.out.println(plain);
-		System.out.println(cipher);
-		System.out.println(aes.decrypt(cipher));
+		System.out.println("Plain Text:: " + plain);
+		System.out.println("Encrypted Text:: " + cipher);
+		System.out.println("Decrypted Text:: " + aes.decrypt(cipher));
 	}
 }
